@@ -1,4 +1,9 @@
-string solution(string &S) {
+
+#include <algorithm>
+#include <numeric>
+
+
+string solution1(string &S) {
     // Implement your solution here
 
     string Final = S;
@@ -21,4 +26,23 @@ string solution(string &S) {
     }
     Final.resize(output_index);
     return Final;
+}
+
+
+
+
+string solution2(string &S) {
+    // Implement your solution here
+    string result="";
+    auto push_delete = [&](char c){ 
+        if (result.size() == 0 || c != result.back()) 
+        {
+            result.push_back(c) ;
+        } else {
+            result.pop_back();
+        }
+    };
+
+    std::for_each(S.begin(),S.end(),push_delete);
+    return result;
 }
