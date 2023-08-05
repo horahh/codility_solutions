@@ -1,0 +1,24 @@
+string solution(string &S) {
+    // Implement your solution here
+
+    string Final = S;
+    size_t output_index = 0;
+    for ( size_t input_index=0; input_index < S.size(); input_index++)
+    {
+        //cout << "input: " << S[input_index] << " output "  << Final[output_index] << "\n";
+        // insert char
+        if (output_index ==0  || S[input_index] != Final[output_index-1])
+        {
+            Final[output_index] = S[input_index];
+            output_index ++;
+            continue;
+        }
+        // delete char
+        if (output_index >0 || S[input_index] == Final[output_index-1])
+        {
+            output_index--;
+        }
+    }
+    Final.resize(output_index);
+    return Final;
+}
