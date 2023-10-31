@@ -1,0 +1,20 @@
+
+# https://app.codility.com/demo/results/trainingF78V3H-VMK/
+
+def solution(A):
+    # Implement your solution here
+    min_val = 10_000
+    # pick the first valid index as start
+    min_index = 0
+    if (len(A))==2:
+        return 0
+    for i in range(0,len(A)-2):
+        avg= (A[i]+A[i+1])/2
+        if A[i+2] < avg:
+            avg = (avg*2+A[i+2])/3
+        if avg < min_val:
+            min_val = avg
+            min_index = i
+    if (A[-2]+A[-1])/2 < min_val:
+        min_index = len(A)-2
+    return min_index
