@@ -1,0 +1,16 @@
+
+
+#  https://app.codility.com/demo/results/training5U8W9U-KAN/
+def gen_positives():
+    p=0
+    while True:
+        p=p+1
+        yield p
+
+def solution(A):
+    # Implement your solution here
+    AP={a for a in A if a > 0}
+    
+    for p in gen_positives():
+        if p not in AP:
+            return p
